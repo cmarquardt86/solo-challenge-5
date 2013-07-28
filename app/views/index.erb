@@ -1,0 +1,21 @@
+<div class="container">
+	<% if current_user %>
+		<% if current_user.access_level == "admin" %>
+			<h3>Click on a student to edit:</h3>
+			<ul>
+			<% User.all.each do |user| %>
+			<a href="/"><li><%= user.name %></li></a>
+			<% end %>
+			</ul>
+		<% else %>
+		<ul>
+			<% User.all.each do |user| %>
+			<li><%= user.name %></li>
+			<% end %>
+		</ul>
+		<% end %>
+	<% else %>
+		<h1>Welcome!</h1>
+	<% end %>
+
+</div>
